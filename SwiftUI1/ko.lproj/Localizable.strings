@@ -1,0 +1,9 @@
+/* 
+  Localizable.strings
+  MasteringSwiftUI
+
+  Created by 박세진 on 8/30/24.
+  Copyright © 2024 Keun young Kim. All rights reserved.
+*/
+
+"Hello" = "안녕하세요";

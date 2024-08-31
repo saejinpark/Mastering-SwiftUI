@@ -24,20 +24,39 @@
 import SwiftUI
 
 struct View_Stepper: View {
-   @State private var quantity = 0
-   
-   var body: some View {
-      VStack {
-         Text("\(quantity)")
-            .font(.system(size: 150))
-         
-         // #1
-      }
-   }
+    @State private var quantity = 0
+    
+    var body: some View {
+        VStack {
+            Text("\(quantity)")
+                .font(.system(size: 150))
+            
+            // #1
+            Stepper("Quantity", value: $quantity, in: 1 ... 5)
+                .padding()
+            
+            Stepper("Quantity") {
+                quantity += 1
+                
+                if quantity > 5 {
+                    quantity = 1
+                }
+                
+            } onDecrement: {
+                quantity -= 1
+                if quantity < 1 {
+                    quantity = 5
+                }
+            }
+            .padding()
+            .labelsHidden()
+
+        }
+    }
 }
 
 struct View_Stepper_Previews: PreviewProvider {
-   static var previews: some View {
-      View_Stepper()
-   }
+    static var previews: some View {
+        View_Stepper()
+    }
 }

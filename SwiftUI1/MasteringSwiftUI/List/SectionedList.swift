@@ -27,19 +27,22 @@ struct SectionedList: View {
    var items = CategorizedProduct.sampleList
    
    var body: some View {
-      VStack {
-         Text("Sectioned List")
-            .font(.largeTitle)
-         
-         List {
-            Text("1")
-            Text("2")
-            Text("3")
-            Text("4")
-            Text("5")
-         }
-         
-      }
+       List {
+           Section {
+               Text("1")
+               Text("2")
+           }
+           
+           Section {
+               Text("3")
+               Text("4")
+               Text("5")
+           } header: {
+               Text("Header")
+           } footer: {
+               Text("Footer")
+           }
+       }
    }
 }
 

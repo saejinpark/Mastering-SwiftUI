@@ -33,11 +33,13 @@ struct View_Spacer: View {
                .foregroundColor(.white)
             
             // #3
+             Spacer()
          }
          .padding()
          .background(Color.blue)
          
          // #1
+        Spacer()
          
          VStack {
             // #5
@@ -48,11 +50,14 @@ struct View_Spacer: View {
                .foregroundColor(.white)
             
             // #4
+             Spacer()
          }
          .padding()
          .background(Color.red)
          
          // #2
+          Spacer()
+          Spacer()
       }
    }
 }

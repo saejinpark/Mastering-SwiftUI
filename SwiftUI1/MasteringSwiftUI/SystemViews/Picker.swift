@@ -23,48 +23,28 @@
 
 import SwiftUI
 
-enum Figure: String, CaseIterable {
-   case rect = "Rectangle"
-   case circle = "Circle"
-   case triangle = "Triangle"
-}
+//enum Figure: String, CaseIterable {
+//   case rect = "Rectangle"
+//   case circle = "Circle"
+//   case triangle = "Triangle"
+//}
 
 
 
 struct View_Picker: View {
    
-   @State private var selected = 0//Figure.rect.rawValue
+    @State private var selected: Sports = .soccer
    
    var body: some View {
-      VStack {
-         Text("\(selected)")
-//         Group {
-//            if selected == Figure.rect.rawValue {
-//               Rectangle()
-//            } else if selected == Figure.circle.rawValue {
-//               Circle()
-//            } else if selected == Figure.triangle.rawValue {
-//               Path { path in
-//                  path.move(to: CGPoint(x: 150, y: 0))
-//                  path.addLine(to: CGPoint(x: 300, y: 300))
-//                  path.addLine(to: CGPoint(x: 0, y: 300))
-//               }
-//            }
-//         }
-//         .frame(width: 300, height: 300)
+      List {
+          Text(selected.rawValue)
+              .font(.system(size: 200))
          
-         
-         Picker(selection: $selected, label: Text("Select")) {
-//            ForEach(Figure.allCases, id: \.rawValue) { item in
-//               Text("\(item.rawValue)")
-//            }
-            ForEach(0 ..< 100) {
-               Text("\($0)")
-            }
-         }
-         .labelsHidden()
-         .padding()
-         //.pickerStyle(SegmentedPickerStyle())
+          Picker("Favorite", selection: $selected) {
+              ForEach(Sports.allCases) { sport in
+                  Text(sport.rawValue)
+              }
+          }
       }
    }
 }

@@ -24,16 +24,47 @@
 import SwiftUI
 
 struct View_HStack: View {
-   var body: some View {
-      Image(systemName: "suit.heart.fill")
-         .resizable()
-         .frame(width: 50, height: 50)
-         .foregroundColor(.red)
-   }
+    var body: some View {
+        HStack(spacing: 0) {
+            heart
+            club
+            spade
+            diamond
+        }
+        .frame(maxWidth: .infinity, maxHeight: .infinity)
+    }
+    
+    private var heart: some View {
+        Image(systemName: "suit.heart.fill")
+            .resizable()
+            .frame(width: 50, height: 50)
+            .foregroundColor(.red)
+    }
+    
+    private var club: some View {
+        Image(systemName: "suit.club.fill")
+            .resizable()
+            .frame(width: 50, height: 50)
+            .foregroundColor(.black)
+    }
+    
+    private var spade: some View {
+        Image(systemName: "suit.spade.fill")
+            .resizable()
+            .frame(width: 50, height: 50)
+            .foregroundColor(.black)
+    }
+    
+    private var diamond: some View {
+        Image(systemName: "suit.diamond.fill")
+            .resizable()
+            .frame(width: 50, height: 50)
+            .foregroundColor(.red)
+    }
 }
 
 struct View_HStack_Previews: PreviewProvider {
-   static var previews: some View {
-      View_HStack()
-   }
+    static var previews: some View {
+        View_HStack()
+    }
 }

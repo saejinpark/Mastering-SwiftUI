@@ -31,7 +31,7 @@ struct View_Form: View {
    @State private var receiveEmail = false
    
    var body: some View {
-      VStack {
+      Form {
          TextField("Email", text: $email)
          SecureField("Password", text: $password)
          TextField("Address", text: $address)

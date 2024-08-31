@@ -26,6 +26,7 @@ import SwiftUI
 struct View_Alert: View {
    @State private var result = ""
    
+    @State private var showAlert = false
    
    var body: some View {
       VStack {
@@ -33,13 +34,16 @@ struct View_Alert: View {
             .font(.largeTitle)
          
          Button(action: {
-            
+            showAlert = true
          }, label: {
             Text("Show Alert")
          })
          .padding()
-         
-        
+         .alert(isPresented: $showAlert) {
+             Alert(title: Text("제목"), message: Text("내용"), primaryButton: .destructive(Text("확인")) {
+                 
+             }, secondaryButton: .cancel())
+         }
          
       }
    }

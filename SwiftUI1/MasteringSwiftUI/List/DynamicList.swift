@@ -24,19 +24,21 @@
 import SwiftUI
 
 struct DynamicList: View {
-      
-   var body: some View {
-      VStack {
-         Text("Dynamic List")
-            .font(.largeTitle)
-     
-         
-      }
-   }
+    
+    var items = Product.sampleList
+    
+    var body: some View {
+        VStack {
+            List(items, id: \.name) { item in
+                Text(item.name)
+            }
+            
+        }
+    }
 }
 
 struct DynamicList_Previews: PreviewProvider {
-   static var previews: some View {
-      DynamicList()
-   }
+    static var previews: some View {
+        DynamicList()
+    }
 }

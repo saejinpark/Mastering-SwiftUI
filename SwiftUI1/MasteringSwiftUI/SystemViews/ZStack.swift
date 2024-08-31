@@ -25,8 +25,41 @@ import SwiftUI
 
 struct View_ZStack: View {
    var body: some View {
-      Text("ZStack")
+       ZStack(alignment: .topLeading) {
+           heart
+           club
+           spade
+           diamond
+       }
    }
+    private var heart: some View {
+        Image(systemName: "suit.heart.fill")
+            .resizable()
+            .frame(width: 50, height: 50)
+            .foregroundColor(.red)
+    }
+    
+    private var club: some View {
+        Image(systemName: "suit.club.fill")
+            .resizable()
+            .frame(width: 100, height: 100)
+            .foregroundColor(.black)
+    }
+    
+    private var spade: some View {
+        Image(systemName: "suit.spade.fill")
+            .resizable()
+            .frame(width: 50, height: 50)
+            .foregroundColor(.black)
+    }
+    
+    private var diamond: some View {
+        Image(systemName: "suit.diamond.fill")
+            .resizable()
+            .frame(width: 200, height: 200)
+            .foregroundColor(.red)
+            .opacity(0.5)
+    }
 }
 
 struct View_ZStack_Previews: PreviewProvider {

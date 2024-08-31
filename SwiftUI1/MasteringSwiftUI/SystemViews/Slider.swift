@@ -24,28 +24,77 @@
 import SwiftUI
 
 struct View_Slider: View {
-   @State private var r = 0.0
-   @State private var g = 0.0
-   @State private var b = 0.0
-   
-   var color: Color {
-      Color(red: r / 255, green: g / 255, blue: b / 255)
-   }
-   
-   var body: some View {
-      VStack {
-         Image(systemName: "smiley.fill")
-            .resizable()
-            .foregroundColor(color)
-            .frame(width: 250, height: 250)
-         
-         
-      }
-   }
+    @State private var r = 0.0
+    @State private var g = 0.0
+    @State private var b = 0.0
+    
+    @State private var dragging = false
+    
+    var color: Color {
+        Color(red: r / 255, green: g / 255, blue: b / 255)
+    }
+    
+    var body: some View {
+        VStack {
+            Button("Reset") {
+                r = 0.0
+                g = 0.0
+                b = 0.0
+            }
+            .buttonStyle(.borderedProminent)
+            .disabled(dragging)
+            
+            Image(systemName: "smiley.fill")
+                .resizable()
+                .foregroundColor(color)
+                .frame(width: 250, height: 250)
+            
+            Slider(value: $r, in: 0...255, step: 1) {
+                EmptyView()
+            } minimumValueLabel: {
+                Text("R")
+                    .foregroundColor(.red)
+            } maximumValueLabel: {
+                Text("\(Int(r))")
+            } onEditingChanged: { editing in
+                dragging = editing
+            }
+            .padding()
+            .tint(.red)
+            
+            
+            Slider(value: $g, in: 0...255, step: 1) {
+                EmptyView()
+            } minimumValueLabel: {
+                Text("G")
+                    .foregroundColor(.green)
+            } maximumValueLabel: {
+                Text("\(Int(g))")
+            } onEditingChanged: { editing in
+                
+            }
+            .padding()
+            .tint(.green)
+            
+            
+            Slider(value: $b, in: 0...255, step: 1) {
+                EmptyView()
+            } minimumValueLabel: {
+                Text("B")
+                    .foregroundColor(.blue)
+            } maximumValueLabel: {
+                Text("\(Int(b))")
+            } onEditingChanged: { editing in
+                
+            }
+            .padding()
+            .tint(.blue)
+        }
+    }
 }
 
 struct View_Slider_Previews: PreviewProvider {
-   static var previews: some View {
-      View_Slider()
-   }
+    static var previews: some View {
+        View_Slider()
+    }
 }
